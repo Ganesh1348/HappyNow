@@ -1,6 +1,7 @@
 package com.time.greenTime.controller;
 
 import java.util.List;
+import java.util.function.Function;
 
 import javax.validation.Valid;
 
@@ -12,10 +13,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.time.greenTime.dto.customerDto;
 import com.time.greenTime.entity.customerEntity;
 import com.time.greenTime.service.customerService;
 
@@ -37,11 +38,13 @@ public class customerController {
 		return new ResponseEntity<Object>(result, HttpStatus.CREATED);
 	}
 
-	@GetMapping("/customer/list")
+	@GetMapping("/customer/list/{pageSkip}/{pageFetch}")
 	@ResponseBody
-	public ResponseEntity<Object> getListOfCustomer() {
+	public ResponseEntity<Object> getListOfCustomer(@RequestParam String desc,
+			@PathVariable(value = "pageSkip") Integer pageSkip, @PathVariable(value = "pageFetch") Integer pageFetch,
+			@RequestParam Integer custId) {
 
-		Object result = _customerService.executeListOfCustomer();
+		Object result = _customerService.executeListOfCustomer(desc, pageSkip, pageFetch, custId);
 		return new ResponseEntity<Object>(result, HttpStatus.OK);
 	}
 

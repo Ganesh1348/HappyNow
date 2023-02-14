@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.time.greenTime.entity.customerEntity;
 
 @Repository
-public interface customerRepository extends JpaRepository<customerEntity, Long> {
+public interface customerRepository extends JpaRepository<customerEntity, Integer> {
 	
 
 }

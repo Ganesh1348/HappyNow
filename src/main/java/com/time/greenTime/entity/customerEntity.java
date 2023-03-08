@@ -45,7 +45,7 @@ public class customerEntity {
 	@NotNull(message = "customerName can not be null")
 	private String customerName;
 	@Column(name = "ser_cen_id")
-	private int servicesCenter;
+	private Integer servicesCenter;
 	@Column(name = "cust_typ_cd")
 	private String customerType;
 	@Column(name = "stat_cd", nullable = false, columnDefinition = "varchar(30) default 'ACTIVE'", insertable = false)

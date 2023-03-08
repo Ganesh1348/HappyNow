@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolationException;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -34,4 +33,15 @@ public class globalExceptionHandler {
 		}
 
 	}
+	
+	@ResponseStatus(HttpStatus.CONFLICT)
+	@ExceptionHandler(NoSuchElementException.class)
+	public Map<String, Object> getValidationMessage(NoSuchElementException e, HttpServletRequest request) {
+
+		Map<String, Object> result = new LinkedHashMap<String, Object>();
+		result.put("Status", HttpStatus.CONFLICT.toString());
+		result.put("Message", "Customer Number doesn't exist, Please check the customer number");
+		return result;
+	}
+
 }

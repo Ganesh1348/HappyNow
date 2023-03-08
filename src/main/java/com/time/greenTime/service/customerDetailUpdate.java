@@ -3,12 +3,9 @@ package com.time.greenTime.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.springframework.stereotype.Component;
-
 import com.time.greenTime.entity.customerEntity;
 
-@Component(value="validatingCustomer")
-public class validCustomer  implements  commonInterface
+public class customerDetailUpdate implements commonInterface
 {
 
 	@Override
@@ -21,7 +18,5 @@ public class validCustomer  implements  commonInterface
 			return cust.stream().collect(Collectors.toList());
 		}
 	}
-
-	
 
 }
